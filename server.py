@@ -20,6 +20,9 @@ VENDOR = ROOT / "vendor"
 if str(VENDOR) not in sys.path:
     sys.path.insert(0, str(VENDOR))
 
+if os.getenv("VERCEL") and os.path.isdir("/tmp"):
+    os.chdir("/tmp")
+
 import pandas as pd
 import requests
 import livef1
