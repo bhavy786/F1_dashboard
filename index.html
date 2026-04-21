@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bhavy's Pit Wall</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ticker-wrap">
+      <div id="ticker-track" class="ticker-track"></div>
+    </div>
+
+    <header class="hero">
+      <span class="speed-line"></span>
+      <span class="speed-line"></span>
+      <span class="speed-line"></span>
+
+      <div class="hero-top">
+        <div>
+          <div class="brand-eyebrow">
+            <span class="checker-flag" aria-hidden="true"></span>
+            <span>Bhavy's personal F1 dashboard</span>
+          </div>
+        </div>
+
+        <div class="brand-right">
+          <p id="greeting" class="greeting">Good day, Bhavy</p>
+          <p id="dateline" class="dateline">Loading local time...</p>
+        </div>
+      </div>
+
+      <div class="title-wrap">
+        <h1 class="hero-title">
+          <span class="line1"><span>Bhavy's</span></span>
+          <span class="line2"><span>Pit Wall</span></span>
+        </h1>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="hero-sub">
+        <p id="hero-summary" class="hero-copy">
+          Loading the race feed, season ladder, and the next lights-out window...
+        </p>
+
+        <div class="hero-statuses">
+          <span id="mode-badge" class="live-badge">Syncing</span>
+          <span id="last-updated" class="meta-pill">Waiting for data</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="race-hero">
+      <div class="race-block">
+        <div class="race-grid">
+          <div>
+            <div class="race-meta-row">
+              <span id="focus-round" class="race-round">Round --</span>
+              <span id="focus-flag" class="race-flag-big">F1</span>
+            </div>
+
+            <h2 id="focus-title" class="race-name">Loading race focus...</h2>
+            <p class="race-circuit">
+              <strong id="focus-circuit">Waiting for circuit</strong>
+              <span> / </span>
+              <span id="focus-location">Waiting for location</span>
+            </p>
+            <p id="focus-summary" class="race-summary">
+              Pulling race status and the next event countdown from the backend.
+            </p>
+
+            <div class="race-stats">
+              <div class="race-stat">
+                <span class="race-stat-label">Session State</span>
+                <span id="focus-status" class="race-stat-val">--</span>
+              </div>
+              <div class="race-stat">
+                <span class="race-stat-label">Country</span>
+                <span id="focus-country" class="race-stat-val">--</span>
+              </div>
+              <div class="race-stat">
+                <span class="race-stat-label">Feed Stack</span>
+                <span id="focus-feed" class="race-stat-val">--</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="race-right">
+            <div class="countdown-label">Next lights out</div>
+            <p id="next-race-name" class="countdown-title">Loading next race...</p>
+            <p id="next-race-detail" class="countdown-detail">
+              Timing the next Grand Prix...
+            </p>
+
+            <div class="countdown">
+              <div class="cd-cell">
+                <div id="countdown-days" class="cd-num">00</div>
+                <div class="cd-label">Days</div>
+              </div>
+              <div class="cd-cell">
+                <div id="countdown-hours" class="cd-num">00</div>
+                <div class="cd-label">Hours</div>
+              </div>
+              <div class="cd-cell">
+                <div id="countdown-minutes" class="cd-num">00</div>
+                <div class="cd-label">Minutes</div>
+              </div>
+              <div class="cd-cell">
+                <div id="countdown-seconds" class="cd-num">00</div>
+                <div class="cd-label">Seconds</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cal-section">
+      <div class="cal-head">
+        <h2 class="cal-title">Season <em>Calendar</em></h2>
+        <p id="calendar-meta" class="cal-meta">Loading race weekends...</p>
+      </div>
+
+      <div class="cal-strip-wrap">
+        <div class="cal-progress-track">
+          <div id="cal-progress-fill" class="cal-progress-fill"></div>
+        </div>
+        <div id="calendar-list" class="cal-strip">
+          <article class="cal-round loading">
+            <p>Loading the 2026 calendar...</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section">
+      <div class="main-grid">
+        <section class="col">
+          <div class="col-head">
+            <div class="col-num">01</div>
+            <div class="col-name">Drivers' <em>Championship</em></div>
+            <div id="drivers-sub" class="col-sub">Loading season ladder</div>
+          </div>
+          <div id="drivers-list"></div>
+        </section>
+
+        <section class="col">
+          <div class="col-head">
+            <div class="col-num">02</div>
+            <div class="col-name">Constructors' <em>Cup</em></div>
+            <div class="col-sub">Official team positions</div>
+          </div>
+          <div id="teams-list"></div>
+        </section>
+
+        <section class="col">
+          <div class="col-head">
+            <div class="col-num">03</div>
+            <div class="col-name">Paddock <em>Intel</em></div>
+            <div class="col-sub">Race recap and session notes</div>
+          </div>
+
+          <div class="podium-block">
+            <div id="podium-head" class="podium-head">Loading podium...</div>
+            <div id="podium-list" class="podium-list"></div>
+          </div>
+
+          <div id="intel-list" class="news-block"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="stats-ribbon">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-label">Championship Leader</div>
+          <div id="stat-leader" class="stat-big">--</div>
+          <div id="stat-leader-sub" class="stat-sub">Loading</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Team Leader</div>
+          <div id="stat-team" class="stat-big">--</div>
+          <div id="stat-team-sub" class="stat-sub">Loading</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Next Race</div>
+          <div id="stat-next" class="stat-big">--</div>
+          <div id="stat-next-sub" class="stat-sub">Loading</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Live Session</div>
+          <div id="stat-live" class="stat-big">--</div>
+          <div id="stat-live-sub" class="stat-sub">Loading</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="live-section">
+      <div class="live-head">
+        <div>
+          <div class="live-num">04</div>
+          <h2 class="live-title">Live Session <em>Control</em></h2>
+          <p id="live-session-summary" class="live-copy">
+            Checking whether a race session is active right now...
+          </p>
+        </div>
+
+        <div class="live-head-meta">
+          <span id="live-session-status" class="session-badge">Checking feed</span>
+          <span id="live-session-label" class="session-meta">No session loaded</span>
+        </div>
+      </div>
+
+      <div class="live-grid">
+        <article class="live-card live-track-card">
+          <div class="live-card-head">
+            <div>
+              <p class="live-kicker">Circuit map</p>
+              <h3 id="live-track-title">Live track</h3>
+            </div>
+            <span id="live-track-mode" class="track-mode-pill">Stand by</span>
+          </div>
+
+          <div class="track-stage">
+            <svg
+              id="live-track-map"
+              class="track-map"
+              viewBox="0 0 1000 720"
+              role="img"
+              aria-label="Live Formula 1 circuit map"
+            ></svg>
+            <div id="live-track-overlay" class="track-overlay">
+              <p>No race today.</p>
+            </div>
+          </div>
+
+          <div class="track-meta">
+            <p id="live-track-note" class="track-note">
+              Live circuit motion appears automatically when a race is active.
+            </p>
+            <div id="live-track-legend" class="track-legend"></div>
+          </div>
+        </article>
+
+        <article class="live-card live-order-card">
+          <div class="live-card-head">
+            <div>
+              <p class="live-kicker">Live order</p>
+              <h3 id="live-order-title">No race today</h3>
+            </div>
+            <span class="track-mode-pill">Race day only</span>
+          </div>
+
+          <div class="live-table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Driver</th>
+                  <th>Gap</th>
+                  <th>Last lap</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="live-order-rows">
+                <tr>
+                  <td colspan="5" class="table-empty">No race today.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer-wrap">
+      <footer class="footer">
+        <div class="f-note">For Bhavy - lights out and away we go</div>
+        <div class="f-brand">The <em>Pit Wall</em></div>
+      </footer>
+    </div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
