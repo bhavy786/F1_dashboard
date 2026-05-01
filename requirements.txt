@@ -1,5 +1,0 @@
-livef1==1.1.107
-pandas==3.0.2
-requests==2.33.1
-lxml==6.1.0
-beautifulsoup4==4.14.3
